@@ -1,4 +1,4 @@
-package com.com.mediaalterations.gateway;
+package com.com.mediaalterations.gateway.authentication;
 
 import org.springframework.cloud.gateway.server.mvc.filter.FilterSupplier;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @Component
-public class AuthFilterSupplier implements FilterSupplier{
+public class AuthFilterSupplier implements FilterSupplier {
 
     @Override
     public Collection<Method> get() {

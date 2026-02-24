@@ -1,4 +1,4 @@
-package com.com.mediaalterations.gateway;
+package com.com.mediaalterations.gateway.authentication;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -12,24 +12,25 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-
     /*
-        Spring's dependency injection mechanism does not support using the @Value annotation directly on a static field
-        because static fields are initialized when the class is loaded, which occurs before Spring's application context
-        is fully initialized and dependency injection takes place.
+     * Spring's dependency injection mechanism does not support using the @Value
+     * annotation directly on a static field
+     * because static fields are initialized when the class is loaded, which occurs
+     * before Spring's application context
+     * is fully initialized and dependency injection takes place.
      */
     private static String secretKey;
 
     @Value("${jwt.secret.key}")
-    public void setSecretKey(String secretKey){
-        JwtUtil.secretKey=secretKey;
+    public void setSecretKey(String secretKey) {
+        JwtUtil.secretKey = secretKey;
     }
 
-    private static SecretKey getSecretKey(){
+    private static SecretKey getSecretKey() {
         return Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
     }
 
-    public static boolean isValid(String token){
+    public static boolean isValid(String token) {
         return Jwts.parser()
                 .verifyWith(getSecretKey())
                 .build()

@@ -1,4 +1,4 @@
-package com.com.mediaalterations.gateway;
+package com.com.mediaalterations.gateway.config;
 
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender;
