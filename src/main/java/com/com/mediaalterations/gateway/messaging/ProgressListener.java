@@ -21,7 +21,7 @@ public class ProgressListener {
         log.info("Received Ffmpeg process progress: pid={} processId={} progress={} duration={} fileSize={}",
                 event.getPid(),
                 event.getProcessId(), event.getProgress(), event.getDuration(), event.getFinalFileSize());
-        messagingTemplate.convertAndSend("/topic/progress." + event.getPid(), event);
+        messagingTemplate.convertAndSend("/topic/progress." + event.getProcessId(), event);
     }
 
 }

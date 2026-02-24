@@ -26,8 +26,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
 
+        // The client must send to -> app/kill/{processId}
+        // Client -> Server
         registry.setApplicationDestinationPrefixes("/app");
 
+        // Server -> Client
         registry.enableStompBrokerRelay("/topic")
                 .setRelayHost(relayHost)
                 .setRelayPort(relayPort)

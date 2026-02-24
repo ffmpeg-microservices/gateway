@@ -21,6 +21,9 @@ public class RabbitMQConfig {
     @Value("${rabbitmq.queue.progress.routingKey}")
     private String routingKey;
 
+    @Value("${rabbitmq.exchange.kill}")
+    private String killExchange;
+
     @Bean
     public Queue progressQueue() {
         // a durable queue is a queue whose metadata is stored on disk and that will
@@ -32,6 +35,11 @@ public class RabbitMQConfig {
     @Bean
     public TopicExchange progressExchange() {
         return new TopicExchange(exchange);
+    }
+
+    @Bean
+    public FanoutExchange killExchange() {
+        return new FanoutExchange(killExchange);
     }
 
     @Bean
