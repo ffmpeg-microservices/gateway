@@ -31,6 +31,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.setApplicationDestinationPrefixes("/app");
 
         // Server -> Client
+        // Need to add this dep implementation
+        // 'org.springframework.boot:spring-boot-starter-webflux'
+        // for the stomp broker relay to work, otherwise it will throw an error like
+        // "Failed to connect to WebSocket server at ws://localhost:61614: Connection
+        // refused: connect"
         registry.enableStompBrokerRelay("/topic")
                 .setRelayHost(relayHost)
                 .setRelayPort(relayPort)
